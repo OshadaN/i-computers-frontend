@@ -1,5 +1,10 @@
+import { Route, Routes } from 'react-router-dom';
 import './App.css'
-import ProductCard from './components/productCard'
+import ProductCard from '../Pages/productCard'
+import HomePage from './pages/homePage';
+import LoginPage from './pages/loginPage';
+import RegisterPage from './pages/registerPage';
+
 import { FaHome } from "react-icons/fa";
 
 function App() {
@@ -7,11 +12,15 @@ function App() {
 
 
   return(
-    <div>
-      <ProductCard name="Apple iPhone 5s" price="$100" image="https://picsum.photos/id/3/200/300"/>
-      <ProductCard name="Apple Laptop" price="$1000" image="https://picsum.photos/id/0/200/300"/>
-      <ProductCard name="Women's Shoes" price="$50" image="https://picsum.photos/id/21/200/300"/>
-      <FaHome className='text-[100px]'/>
+    <div class="w-full h-screen border-2">
+      <Routes> 
+          
+          <Route path="/" element={<HomePage/>} />
+          <Route path="/login" element={<LoginPage/>}/>
+          <Route path="/regsiter" element={<RegisterPage/>}/>
+
+      </Routes>
+      
     </div>
   )
 }
