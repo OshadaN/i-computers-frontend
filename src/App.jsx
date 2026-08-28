@@ -5,12 +5,15 @@ import RegisterPage from '../Pages/registerPage';
 import AdminPage from '../Pages/adminPage';
 import { Route, Routes } from 'react-router-dom';
 import TestPage from '../Pages/testPage';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   
 
   return(
     <div class="w-full h-screen">
+      <Toaster position='top-right'/>
+      
       <Routes> 
           
           <Route path="/" element={<HomePage/>} />
