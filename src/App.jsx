@@ -1,23 +1,24 @@
+import './App.css';
+import HomePage from '../Pages/homePage';
+import LoginPage from '../Pages/loginPage';
+import RegisterPage from '../Pages/registerPage';
+import AdminPage from '../Pages/adminPage';
 import { Route, Routes } from 'react-router-dom';
-import './App.css'
-import ProductCard from '../Pages/productCard'
-import HomePage from './pages/homePage';
-import LoginPage from './pages/loginPage';
-import RegisterPage from './pages/registerPage';
-
-import { FaHome } from "react-icons/fa";
+import TestPage from '../Pages/testPage';
 
 function App() {
   
 
-
   return(
-    <div class="w-full h-screen border-2">
+    <div class="w-full h-screen">
       <Routes> 
           
           <Route path="/" element={<HomePage/>} />
           <Route path="/login" element={<LoginPage/>}/>
-          <Route path="/regsiter" element={<RegisterPage/>}/>
+          <Route path="/register" element={<RegisterPage/>}/>
+          <Route path="/admin/*" element={<AdminPage/>}/>
+          <Route path="/test" element={<TestPage/>}/>
+
 
       </Routes>
       
