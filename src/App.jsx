@@ -6,7 +6,6 @@ import AdminPage from '../Pages/adminPage';
 import { Route, Routes } from 'react-router-dom';
 import TestPage from '../Pages/testPage';
 import { Toaster } from 'react-hot-toast';
-
 function App() {
   
 
