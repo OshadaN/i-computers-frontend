@@ -10,7 +10,7 @@ function App() {
   
 
   return(
-    <div class="w-full h-screen">
+    <div className="w-full h-screen">
       <Toaster position='top-right'/>
       
       <Routes> 
