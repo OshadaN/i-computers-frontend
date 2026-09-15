@@ -2,6 +2,12 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { BiUpload } from "react-icons/bi";
+import { CiCircleInfo } from "react-icons/ci";
+import api from "../../lib/api";
+import uploadMedia from "../../lib/uploadMedia";
+import LoadingAnimation from "../../src/components/loadingAnimations";
+
+
 
 export default function AddProductForm() {
     const [productId, setProductId] = useState("");
@@ -16,16 +22,34 @@ export default function AddProductForm() {
     const [category, setCategory] = useState("Laptop");
     const [brand, setBrand] = useState("");
     const [model, setModel] = useState("");
+    const [loading, setLoading] = useState(false);    
 
     const navigate = useNavigate();
     
     async function handleSave() {
+      setLoading(true);
 
       const token = localStorage.getItem("token");
+
       if (token == null) {
             toast.error("You are not logged in")
             navigate("/login")
             return;
+      }
+
+      const productData = {
+            productId : productId,
+            name : Name,
+            altNames : [],
+            description : description,
+            images : [],
+            price : price,
+            labelledPrice : labelledPrice,
+            stock : stock,
+            isAvailable : isAvailable,
+            category : category,
+            brand : brand,
+            model : model
       }
 
       try{
@@ -40,11 +64,26 @@ export default function AddProductForm() {
 
             console.log(imageUploadPromises)
 
-            const imageUrls = await Promise.all(imageUploadPromises)
+            productData.images = await Promise.all(imageUploadPromises)
+
+            productData.altNames = altNames.split(",")
+
+            const res = await api.post("/products", productData , {
+                  headers: {
+                        Authorization: "Bearer " + token
+                  }
+                  }
+            )
+
+            console.log(res)
+            toast.success("Product added successfully")
+
+            navigate("/admin/products")
 
       }catch (err) {
             console.log(err)
             toast.error("Failed to add product")
+            setLoading(false)
       }
     }
 
@@ -52,6 +91,8 @@ export default function AddProductForm() {
 
     return (
         <div className="w-full max-h-full flex flex-wrap p-4 items-start gap-0 overflow-y-scroll">
+
+           { loading && <LoadingAnimation /> }
 
             <div className="w-full h-[100px] bg-white shadow-md rounded-md flex items-center p-4 justify-between mb-8">
                 <h1 className="text-2xl font-semibold text-secondary">Add Product</h1>
@@ -76,7 +117,7 @@ export default function AddProductForm() {
             </div>
 
             <div className="w-[45%] flex flex-col h-[100px] p-2">
-                  <label className="text-secondary text-lg font-semibold mb-2">Alternative Names</label>
+                  <label className="text-secondary text-lg font-semibold mb-2 flex items-center gap-2">Alternative Names<span className="flex justify-center items-center h-full italic font-thin"><CiCircleInfo />(Comma-separated)</span></label>
                   <input type="text" value={altNames} onChange={(e) => setAltNames(e.target.value)} className="w-full h-[40px] rounded-md border-2 border-gray-300 p-2 mb-4" />
 
             </div>
@@ -117,7 +158,7 @@ export default function AddProductForm() {
 
             <div className="w-1/4 flex flex-col h-[100px] p-2">
                   <label className="text-secondary text-lg font-semibold mb-2">Availability</label>
-                  <select value={isAvailable} onChange={(e) => setIsAvailable(e.target.value)} className="w-full h-[40px] rounded-md border-2 border-gray-300 p-2 mb-4">
+                  <select value={isAvailable} onChange={(e) => setIsAvailable(e.target.value === "true")} className="w-full h-[40px] rounded-md border-2 border-gray-300 p-2 mb-4">
                         <option value={true}>In Stock</option>
                         <option value={false}>Out of Stock</option>
                   </select>
