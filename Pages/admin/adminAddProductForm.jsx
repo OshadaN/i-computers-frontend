@@ -117,7 +117,7 @@ export default function AddProductForm() {
             </div>
 
             <div className="w-[45%] flex flex-col h-[100px] p-2">
-                  <label className="text-secondary text-lg font-semibold mb-2 flex items-center gap-2">Alternative Names<span className="flex justify-center items-center h-full italic font-thin"><CiCircleInfo />(Comma-separated)</span></label>
+                  <label className="text-secondary text-lg font-semibold mb-2 flex items-center gap-2">Alternative Names<div className="flex justify-center items-center h-full italic font-thin tooltip"><CiCircleInfo /><div className="tooltip-text">Comma Separated</div></div></label>
                   <input type="text" value={altNames} onChange={(e) => setAltNames(e.target.value)} className="w-full h-[40px] rounded-md border-2 border-gray-300 p-2 mb-4" />
 
             </div>
