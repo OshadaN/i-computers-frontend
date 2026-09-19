@@ -7,6 +7,7 @@ import AdminAddProductForm from "./admin/adminAddProductForm";
 import EditProductForm from "./admin/adminEditProductForm";
 
 
+
 export default function AdminPage (){
     return(
         <div className="w-full h-full flex">
@@ -26,14 +27,12 @@ export default function AdminPage (){
             <div className="w-[calc(100%-360px)] h-full bg-primary">
 
                 <Routes>
-                    <Route path="/" element={<h1>Orders Page</h1>}/>
-                    <Route path="/products" element={<AdminProductsPage/>}/>
-                    <Route path="/users" element={<h1>Users Page</h1>}/>
-                    <Route path="/add-products" element={<AdminAddProductForm/>}/>
-                    <Route path="/edit-product" element={<EditProductForm/>}/>
-
-
-                </Routes>
+    <Route path="/" element={<h1>Orders Page</h1>}/>
+    <Route path="products" element={<AdminProductsPage/>}/>
+    <Route path="/users" element={<h1>Users Page</h1>}/>
+    <Route path="/add-products" element={<AdminAddProductForm/>}/>
+    <Route path="/edit-product" element={<EditProductForm/>}/>
+</Routes>
                 </div>
             
             

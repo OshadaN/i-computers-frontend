@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { CiTrash } from "react-icons/ci";
-import api from "../../lib/api";
+import api from "../lib/api";
 import toast from "react-hot-toast";
 
 export default function DeleteProductModal(props) {

@@ -1,5 +1,4 @@
-import LoadingAnimation from "../src/components/loadingAnimations";
-
+import LoadingAnimation from "../components/loadingAnimations";
 
 export default function TestPage() {
     return (

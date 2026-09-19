@@ -1,21 +1,21 @@
 import './App.css';
-import HomePage from '../Pages/homePage';
-import LoginPage from '../Pages/loginPage';
-import RegisterPage from '../Pages/registerPage';
-import AdminPage from '../Pages/adminPage';
+import HomePage from "./Pages/homePage";
+import LoginPage from './Pages/loginPage';
+import RegisterPage from './Pages/registerPage';
+import AdminPage from './Pages/adminPage';
 import { Route, Routes } from 'react-router-dom';
-import TestPage from '../Pages/testPage';
+import TestPage from './Pages/testPage';
 import { Toaster } from 'react-hot-toast';
 function App() {
   
 
   return(
-    <div className="w-full h-screen">
+    <div className="w-full h-screen bg-primary">
       <Toaster position='top-right'/>
       
       <Routes> 
           
-          <Route path="/" element={<HomePage/>} />
+          <Route path="/*" element={<HomePage/>} />
           <Route path="/login" element={<LoginPage/>}/>
           <Route path="/register" element={<RegisterPage/>}/>
           <Route path="/admin/*" element={<AdminPage/>}/>

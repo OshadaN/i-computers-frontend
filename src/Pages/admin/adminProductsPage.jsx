@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
-import api from "../../lib/api";
 import { CiTrash, CiEdit } from "react-icons/ci";
-import LoadingAnimation from "../../src/components/loadingAnimations";
-import DeleteProductModal from "../../src/components/deleteProductModal";
+import api from "../../lib/api";
+import uploadMedia from "../../lib/uploadMedia";
+import LoadingAnimation from "../../components/loadingAnimations";
+import DeleteProductModal from "../../components/deleteProductModal";
 
 export default function AdminProductsPage() {
 
