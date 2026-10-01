@@ -1,18 +1,20 @@
 import { useState } from "react"
-import { addToCart, getCart } from "../lib/cart"
+import { addToCart, getCart, getCartTotal } from "../lib/cart"
 import getFormattedPrice from "../lib/price-format"
+import { Link } from "react-router-dom";
 
 export default function CartPage(){
 
     const [cart , setCart] = useState(getCart())
 
     return(
-        <div className="w-full h-[calc(100vh-100px)] overflow-y-scroll flex flex-col items-center">
+        <div className="w-full h-[calc(100vh-100px)] overflow-y-scroll flex flex-col items-center pb-[200px]">
             {
                 cart.map(
                     (item,index)=>{
                         return(
-                            <div key={index} className="w-[550px] h-[130px] bg-white my-4 shadow-md rounded-md overflow-hidden flex flex-row">
+                            <div key={index} className="w-[550px] min-h-[130px] bg-white my-4 shadow-md rounded-md overflow-hidden flex flex-row">
+
                                 <img src={item.product.image} className="h-full w-[130px] object-cover"/>
                                 <div className="w-[420px] h-full p-1 flex flex-col">
                                     <h1 className="font-semibold">{item.product.name}</h1>
@@ -42,15 +44,14 @@ export default function CartPage(){
                                                 setCart(getCart())
                                             }
                                         }
-                                         className="w-[40px] h-full hover:bg-accent hover:text-white text-accent font-semibold hover:bg-accent-dark transition-colors duration-300 cursor-pointer">-</button>
+                                         className="w-[40px] h-full hover:bg-accent hover:text-white text-accent font-semibold hover:bg-accent-dark transition-colors duration-300 cursor-pointer">+</button>
 
                                     </div>
 
                                     <p className="text-lg font-normal text-gray-600">{getFormattedPrice(item.product.price*item.qty)}</p>
 
-                                    </div>
+                                    </div> 
                                     
-
                                 </div>
                                 
                             </div>
@@ -58,6 +59,20 @@ export default function CartPage(){
                     }
                 )
             }
+
+            <div className="w-[550px] min-h-[90px] fixed bottom-2  bg-white my-4 shadow-accent shadow-sm rounded-md overflow-hidden flex flex-row items-center justify-between px-2">
+
+                <Link state={cart} to="/checkout" className="bg-accent hover:bg-accent-dark transition-colors duration-300 text-white px-4 py-2 rounded-md font-semibold">
+    Checkout
+</Link>
+                
+                
+
+        
+                <span className="text-lg font-normal text-secondary font-semibold pr-1">{getFormattedPrice(getCartTotal(cart))}</span>
+    
+            </div>
+
 
         </div>
     )

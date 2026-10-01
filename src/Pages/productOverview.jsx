@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { useLocation, useParams } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate, useParams } from "react-router-dom";
 import LoadingAnimation from "../components/loadingAnimations";
 import api from "../lib/api";
 import ImageSlideShow from "../components/imageSlideShow";
@@ -8,7 +8,7 @@ import { BiCategory } from "react-icons/bi";
 import { FaAngleRight } from "react-icons/fa";
 import { HiOutlineBadgeCheck } from "react-icons/hi";
 import getFormattedPrice from "../lib/price-format";
-import { addToCart, getCart } from "../lib/cart";
+import { addToCart, } from "../lib/cart";
 
 
 
@@ -20,6 +20,7 @@ export default function ProductOverview() {
 
     const [product, setProduct] = useState(location.state);
     const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
 
     useEffect(() => {
         api.get("/products/" + params.productId)
@@ -82,14 +83,51 @@ export default function ProductOverview() {
                                 }
                             }>Add to Cart</button>
 
-                            <button className="w-[200px] h-[60px] bg-accent border-2 text-white font-semibold rounded-md hover:bg-white hover:text-accent ml-2 transition-colors duration-500 cursor-pointer"
+                            {/* <Link
+                            to="/checkout"
+                            state={
+                                [
+                                    {
+                                        product : {
+                                            productId : product.productId, 
+                                                    name : product.name,
+                                                    price : product.price,
+                                                    labelledPrice : product.labelledPrice,
+                                                    image : product.images [0]
+                                        },
+                                        qty : 1
+                                    }
+                                ]
+                                    
+                                }
+                            className="w-[200px] h-[60px] bg-accent border-2 text-white font-semibold rounded-md hover:bg-white hover:text-accent ml-2 transition-colors duration-500 cursor-pointer justify-center items-center flex">
+                            Buy Now
+                            </Link> */}
+
+                            <button 
+
                             onClick={
                                 ()=>{
-                                    const cart = getCart();
-
-                                    console.log(cart);
+                                    navigate("/checkout" , {
+                                        state : [
+                                            {
+                                                product : {
+                                                    productId : product.productId, 
+                                                    name : product.name,
+                                                    price : product.price,
+                                                    labelledPrice : product.labelledPrice,
+                                                    image : product.images [0]
+                                                },
+                                                qty : 1
+                                            }
+                                        ]
+                                    })
                                 }
-                            }>Buy Now</button>
+                            }
+
+                            className="w-[200px] h-[60px] bg-accent border-2 text-white font-semibold rounded-md hover:bg-white hover:text-accent ml-2 transition-colors duration-500 cursor-pointer justify-center items-center flex">
+                            Buy Now
+                            </button>
 
                         </div>
 
