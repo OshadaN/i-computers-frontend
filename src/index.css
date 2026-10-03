@@ -15,3 +15,25 @@
 .tooltip:hover .tooltip-text{
     display: block;
 }
+
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
+    width: 8px;
+}   
+
+::-webkit-scrollbar-track {
+    background: white;
+} 
+
+::-webkit-scrollbar-thumb {
+    background: #000080;
+    border-radius: 4px;
+}
+
+/* Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #000080 transparent;
+}
+
+
