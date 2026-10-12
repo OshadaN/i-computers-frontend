@@ -4,6 +4,7 @@ import { BsBox } from "react-icons/bs";
 import { LuUsers } from "react-icons/lu";
 import AdminProductsPage from "./admin/adminProductsPage";
 import AdminAddProductForm from "./admin/adminAddProductForm";
+import AdminOrdersPage from "./admin/adminOrdersPage";
 import EditProductForm from "./admin/adminEditProductForm";
 
 
@@ -27,7 +28,7 @@ export default function AdminPage (){
             <div className="w-[calc(100%-360px)] h-full bg-primary">
 
                 <Routes>
-    <Route path="/" element={<h1>Orders Page</h1>}/>
+    <Route path="/" element={<AdminOrdersPage/>}/>
     <Route path="products" element={<AdminProductsPage/>}/>
     <Route path="/users" element={<h1>Users Page</h1>}/>
     <Route path="/add-products" element={<AdminAddProductForm/>}/>

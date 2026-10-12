@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import toast from "react-hot-toast";
-import { CiTrash, CiEdit } from "react-icons/ci";
+import { CiEdit } from "react-icons/ci";
 import api from "../../lib/api";
 import uploadMedia from "../../lib/uploadMedia";
 import LoadingAnimation from "../../components/loadingAnimations";
 import DeleteProductModal from "../../components/deleteProductModal";
 
-export default function AdminProductsPage() {
+export default function AdminOrdersPage() {
 
     const [products, setProducts] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
