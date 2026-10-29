@@ -39,7 +39,7 @@ export default function AdminOrdersPage() {
     return (
         <div className="w-full max-h-full flex flex-col p-4 items-start gap-0 overflow-y-scroll">
 
-            <div className="w-full h-[100px] bg-white shadow-md rounded-md flex items-center p-4 justify-between mb-8">
+            <div className="w-full min-h-[100px] bg-white shadow-md rounded-md flex items-center p-4 justify-between mb-8">
 
                 {
                     isLoading && <LoadingAnimation />
@@ -69,7 +69,7 @@ export default function AdminOrdersPage() {
             </div>
 
 
-            <table className="w-full bg-white shadow-md rounded-md overflow-hidden text-center">
+            <table className="w-full bg-white shadow-md rounded-md overflow-hidden text-center mb-[100px]">
 
                 <thead className="bg-accent text-white h-[60px]">
 

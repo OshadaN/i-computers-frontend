@@ -1,5 +1,6 @@
 import {Link } from "react-router-dom";
 import { PiShoppingCartSimple } from "react-icons/pi";
+import UserData from "./userData";
 
 
 export default function Header(){
@@ -10,16 +11,18 @@ export default function Header(){
 
             </Link>
 
-            <div className="h-full text-primary flex items-center pt-[20px]">
+            <div className="h-full text-primary flex items-center">
+
                 <Link to="/" className="h-full items-center px-4 hover:bg-accent-dark">Home</Link>
                 <Link to="/products" className="h-full items-center px-4 hover:bg-accent-dark">Products</Link>
                 <Link to="/about" className="h-full items-center px-4 hover:bg-accent-dark">About</Link>
 
             </div>
-          <div className="w-[100px] h-full flex items-center">
+          <div className="h-full flex items-center justify-between gap-6">
             <Link to="/cart">
             <PiShoppingCartSimple className="text-white text-4xl"/>
             </Link>
+            <UserData/>
             </div>
 
         </header>
