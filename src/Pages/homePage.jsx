@@ -5,8 +5,18 @@ import ProductOverview from "./productOverview";
 import CartPage from "./cartPage";
 import CheckoutPage from "./checkout";
 import MyOrdersPage from "./myOrdersPage";
+import SettingsPage from "./settingsPage";
+import { useContext } from "react";
+import UserContext from "../context/userContext";
 
 export default function HomePage() {
+
+    const userInfo = useContext(UserContext);
+
+    if (!userInfo.userLoadingFinished) {
+        return <div>Loading...</div>;
+    }
+
     return (
         <div className="min-h-full w-full bg-primary">
             <Header />
@@ -19,6 +29,7 @@ export default function HomePage() {
                 <Route path="/cart" element={<CartPage/>} />
                 <Route path="/checkout" element={<CheckoutPage/>} />
                 <Route path="/my-orders" element={<MyOrdersPage/>}/>
+                <Route path="/settings" element={<SettingsPage/>}/>
                 <Route path="/*" element={<h1>404 Not Found</h1>} />
             </Routes>
         </div>
