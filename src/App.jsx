@@ -9,6 +9,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import { useState, useEffect } from 'react';
 import api from './lib/api';
 import UserContext from './context/userContext';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 function App() {
 
   const [user, setUser] = useState(null)
@@ -39,13 +40,15 @@ function App() {
 
   return (
 
-    <UserContext value={
-      {
+    <GoogleOAuthProvider clientId="73662709010-f65udf0blqksbrof0516kl31qice69um.apps.googleusercontent.com">
+
+    <UserContext 
+    value={{
         user: user,
         setUser: setUser,
         userLoadingFinished: userLoadingFinished,
-      }
-    }>
+      }}
+    >
       <div className="w-full h-screen bg-primary">
         <Toaster position='top-right' />
 
@@ -58,7 +61,10 @@ function App() {
         </Routes>
       </div>
     </UserContext>
+    </GoogleOAuthProvider>
   )
 }
 
 export default App
+
+// 73662709010-f65udf0blqksbrof0516kl31qice69um.apps.googleusercontent.com

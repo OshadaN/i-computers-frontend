@@ -8,15 +8,15 @@ export default function CartPage(){
     const [cart , setCart] = useState(getCart())
 
     return(
-        <div className="w-full h-[calc(100vh-100px)] overflow-y-scroll flex flex-col items-center pb-[200px]">
+        <div className="w-full h-[calc(100vh-100px)] overflow-y-scroll flex flex-col items-center pb-[180px]">
             {
                 cart.map(
                     (item,index)=>{
                         return(
-                            <div key={index} className="w-[550px] min-h-[130px] bg-white my-4 shadow-md rounded-md overflow-hidden flex flex-row">
+                            <div key={index} className="w-full lg:w-[550px] min-h-[130px] bg-white my-4 shadow-md rounded-md overflow-hidden flex flex-row">
 
-                                <img src={item.product.image} className="h-full w-[130px] object-cover"/>
-                                <div className="w-[420px] h-full p-1 flex flex-col">
+                                <img src={item.product.image} className="h-full w-[130px] shrink-0 object-cover"/>
+                                <div className="flex-1 min-w-0 h-full p-1 flex flex-col">
                                     <h1 className="font-semibold">{item.product.name}</h1>
                                     {
                                         item.product.labelledPrice > item.product.price &&
@@ -60,7 +60,8 @@ export default function CartPage(){
                 )
             }
 
-            <div className="w-[550px] min-h-[90px] fixed bottom-2  bg-white my-4 shadow-accent shadow-sm rounded-md overflow-hidden flex flex-row items-center justify-between px-2">
+            <div className="w-full lg:w-[550px] min-h-[130px] my-4 rounded-md overflow-hidden flex lg:hidden flex-row"></div>
+            <div className="w-full lg:w-[550px] min-h-[90px] fixed bottom-[80px] lg:bottom-2 left-1/2-translate-x-1/2 bg-white my-4 shadow-accent shadow-sm rounded-md overflow-hidden flex flex-row items-center justify-between px-2">
 
                 <Link state={cart} to="/checkout" className="bg-accent/75 hover:bg-accent cursor-pointer transition-colors duration-300 text-white px-4 py-2 rounded-md font-semibold">
     Checkout

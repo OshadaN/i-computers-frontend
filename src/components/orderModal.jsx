@@ -117,16 +117,16 @@ export default function OrderModal(props) {
                 onRequestClose={() => setIsOpen(false)}
                 style={{
                     content: {
-                        width: '450px',
                         margin: 'auto',
                         padding: '0px',
+                        paddingBottom: '0px',
                         backgroundColor: 'transparent',
                         border: 'none',
                     },
                 }}
             >
 
-                <div className="w-full min-h-full rounded-2xl bg-primary flex flex-col">
+                <div className="w-full min-h-full rounded-2xl bg-primary flex flex-col z-50">
 
                     {/* Order Summary Header */}
 
@@ -352,7 +352,7 @@ export default function OrderModal(props) {
 
                         {/* Buttons */}
 
-                        <div className="w-full sticky bottom-0 h-[70px] bg-[#7979b8] rounded-b-2xl flex flex-row justify-center items-center gap-10">
+                        <div className="w-full sticky bottom-0 h-[70px] bg-[#7979b8] rounded-b-2xl flex flex-row justify-center items-center gap-7 z-50 mb-[80px] lg:mb-0">
 
 
                             {/* Submit Order */}
@@ -360,7 +360,7 @@ export default function OrderModal(props) {
                             <button
                                 onClick={handleConfirmOrder}
                                 disabled={isSubmitting}
-                                className="bg-accent/75 hover:bg-green-700 cursor-pointer transition-colors duration-300 text-white px-4 py-2 rounded-md font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
+                                className="bg-accent/75 hover:bg-green-700 cursor-pointer transition-colors duration-300 text-white px-4 py-2 rounded-md font-semibold"
                             >
                                 {isSubmitting ? "Placing..." : "Confirm Order"}
                             </button>
@@ -371,7 +371,7 @@ export default function OrderModal(props) {
                             <button
                                 onClick={() => setIsOpen(false)}
                                 disabled={isSubmitting}
-                                className="bg-gray-500/75 hover:bg-red-500 cursor-pointer transition-colors duration-300 text-white px-4 py-2 rounded-md font-semibold"
+                                className="bg-gray-500/75  hover:bg-red-500 cursor-pointer transition-colors duration-300 text-white px-4 py-2 rounded-md font-semibold"
                             >
                                 Cancel
                             </button>

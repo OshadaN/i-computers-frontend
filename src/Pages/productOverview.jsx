@@ -10,9 +10,6 @@ import { HiOutlineBadgeCheck } from "react-icons/hi";
 import getFormattedPrice from "../lib/price-format";
 import { addToCart, } from "../lib/cart";
 
-
-
-
 export default function ProductOverview() {
 
     const params = useParams();
@@ -44,17 +41,29 @@ export default function ProductOverview() {
 
             {/* Product Details */}
             {product != null && !loading && (
-                <div className="w-full h-full min-h-full flex">
+                <div className="w-full h-auto pb-[80px] lg:pb-0 lg:h-full lg:min-h-full flex flex-col lg:flex-row">
+
+                    <h1 className="lg:hidden text-2xl py-4 px-2 font-semibold">{product.name}
+
+                            {product.altNames?.map(
+                                (name, index) => (
+                                <span key={index} className="font-normal text-gray-500"> | {name}
+                                </span>
+                            )
+                        )
+                    }
+                        </h1>
+
 
                     {/* Product Images */}
-                    <div className="w-1/2 h-full flex justify-center items-center">
+                    <div className="lg:w-1/2 lg:h-full flex justify-center items-center">
                         <ImageSlideShow images={product.images} />
                     </div>
 
                     {/* Product Information */}
-                    <div className="w-1/2 h-full p-8 flex flex-col">
+                    <div className="w-1/2 lg:w-1/2 lg:h-full p-8 flex flex-col">
 
-                        <h1 className="text-3xl font-semibold">{product.name}
+                        <h1 className="hidden lg:blocktext-3xl font-semibold">{product.name}
 
                             {product.altNames?.map(
                                 (name, index) => (
@@ -74,8 +83,8 @@ export default function ProductOverview() {
                         <p className="text-3xl font-semibold text-accent mt-3">{getFormattedPrice(product.price)}</p>
                         <p className="text-lg font-normal text-gray-600 mt-3">{product.description}</p>
 
-                        <div className="w-full py-5 gap-4 flex">
-                            <button className="w-[200px] h-[60px] bg-white border-2 border-accent text-accent font-semibold rounded-md hover:bg-accent hover:text-white transition-colors duration-500 cursor-pointer"
+                        <div className="w-full py-5 flex flex-col sm:flex-row gap-3 items-center">
+                            <button className="w-full sm:w-[200px] min-h-[60px] px-4 py-3 bg-white border-2 border-accent text-accent font-semibold rounded-md hover:bg-accent hover:text-white transition-colors duration-500 cursor-pointer"
                             onClick={
                                 ()=>{
                                     addToCart(product,1);
@@ -125,7 +134,7 @@ export default function ProductOverview() {
                                 }
                             }
 
-                            className="w-[200px] h-[60px] bg-accent border-2 text-white font-semibold rounded-md hover:bg-white hover:text-accent ml-2 transition-colors duration-500 cursor-pointer justify-center items-center flex">
+                            className="w-full sm:w-[200px] min-h-[60px] px-4 py-3 bg-accent border-2 text-white font-semibold rounded-md hover:bg-white hover:text-accent ml-2 transition-colors duration-500 cursor-pointer">
                             Buy Now
                             </button>
 
