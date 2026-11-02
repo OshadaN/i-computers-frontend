@@ -7,10 +7,25 @@ import AdminAddProductForm from "./admin/adminAddProductForm";
 import AdminOrdersPage from "./admin/adminOrdersPage";
 import AdminUsersPage from "./admin/adminUsersPage";
 import EditProductForm from "./admin/adminEditProductForm";
+import { useContext } from "react";
+import UserContext from "../context/userContext";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 
 
 export default function AdminPage() {
+
+    const userData = useContext(UserContext);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!userData.user || !userData.user.isAdmin) {
+            navigate("/login");
+        }
+    }, [userData.user, navigate]);
+
+
     return (
         <div className="w-full h-full flex">
 

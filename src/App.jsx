@@ -10,6 +10,7 @@ import { useState, useEffect } from 'react';
 import api from './lib/api';
 import UserContext from './context/userContext';
 import { GoogleOAuthProvider } from '@react-oauth/google';
+import ResetPasswordPage from './Pages/resetPassword';
 function App() {
 
   const [user, setUser] = useState(null)
@@ -56,6 +57,7 @@ function App() {
           <Route path="/*" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
+          <Route path="/reset-password" element={<ResetPasswordPage />} />
           <Route path="/admin/*" element={<AdminPage />} />
           <Route path="/test" element={<TestPage />} />
         </Routes>
